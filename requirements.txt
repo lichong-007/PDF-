@@ -1,0 +1,2 @@
+# 第一步（选页）、第二步（渲染 PNG）需要 PyMuPDF（import 名为 fitz）
+pymupdf>=1.23.0

@@ -1,0 +1,9 @@
+SECTION2_EXPERIMENTAL = "section2_experimental"
+COMPOSITION_TABLE = "composition_table"
+MECHANICAL_TABLE = "mechanical_table"
+
+ALL_LABELS = (
+    SECTION2_EXPERIMENTAL,
+    COMPOSITION_TABLE,
+    MECHANICAL_TABLE,
+)
