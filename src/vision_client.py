@@ -91,9 +91,6 @@ def _post_chat(*, base_url: str, api_key: str, body: dict, timeout_sec: int) -> 
         raise RuntimeError(f"API HTTP {e.code}: {err_body}") from e
     try:
         result = payload["choices"][0]["message"]["content"]
-        print("--------------------------------")
-        print(f"result: {result}")
-        print("--------------------------------")
         return result
     except (KeyError, IndexError, TypeError) as e:
         raise RuntimeError(f"无法解析 API 返回: {payload!r}") from e

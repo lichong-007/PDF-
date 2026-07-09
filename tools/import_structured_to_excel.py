@@ -12,6 +12,14 @@ import pandas as pd
 MECH_START_COL = "YS(屈服强度)"
 
 
+def project_root() -> Path:
+    return Path(__file__).resolve().parents[1]
+
+
+def default_excel_path() -> Path:
+    return project_root() / "初建数据库.xlsx"
+
+
 def _to_cell_value(v: Any) -> Any:
     if isinstance(v, (dict, list)):
         return json.dumps(v, ensure_ascii=False)
@@ -53,8 +61,8 @@ def main() -> None:
     p.add_argument(
         "--excel",
         type=Path,
-        default=Path(r"E:\new_product\初建数据库.xlsx"),
-        help="目标 Excel 路径，默认 E:\\new_product\\初建数据库.xlsx",
+        default=default_excel_path(),
+        help=f"目标 Excel 路径，默认 {default_excel_path()}",
     )
     p.add_argument("--sheet", type=str, default=None, help="工作表名，默认第一个 sheet")
     p.add_argument(

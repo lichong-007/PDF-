@@ -1,2 +1,5 @@
 .env
 src/.env
+__pycache__/
+*.py[cod]
+out_test/

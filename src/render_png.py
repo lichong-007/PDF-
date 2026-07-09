@@ -19,12 +19,19 @@ def render_pages_to_png(
     pdf_path = Path(pdf_path).resolve()
     out_dir = Path(out_dir).resolve()
     out_dir.mkdir(parents=True, exist_ok=True)
+    if dpi <= 0:
+        raise ValueError(f"dpi 必须为正数，当前: {dpi}")
 
     zoom = dpi / 72.0
     mat = fitz.Matrix(zoom, zoom)
 
     doc = fitz.open(str(pdf_path))
     try:
+        invalid_pages = [pno for pno in pages if pno < 1 or pno > doc.page_count]
+        if invalid_pages:
+            raise ValueError(
+                f"页码超出范围: {invalid_pages}; PDF 总页数: {doc.page_count}"
+            )
         written: list[Path] = []
         for pno in pages:
             page = doc.load_page(pno - 1)

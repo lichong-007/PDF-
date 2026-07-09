@@ -208,7 +208,6 @@ def process_one_summary(
         system_text=DEFAULT_SYSTEM,
         user_text=user_text,
     )
-    print(f"大模型输出raw: {raw}")
     parsed = parse_json_text(raw)
     parsed = normalize_rows(parsed)
     parsed = apply_post_rules(parsed, summary_text)
